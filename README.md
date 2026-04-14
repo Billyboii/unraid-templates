@@ -1,4 +1,4 @@
-# Unraid Community Apps templates
+# Unraid Community Apps Templates
 
 These are Unraid Community App templates for the following apps:
 
