@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>MCSManager-Daemon</Name>
+  <Repository>githubyumao/mcsmanager-daemon:latest</Repository>
+  <Registry>https://hub.docker.com/r/githubyumao/mcsmanager-daemon</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://forums.unraid.net/topic/197644-support-mcsmanager-daemon-and-mcsmanager-web/</Support>
+  <Project>https://mcsmanager.com</Project>
+  <Overview>MCSManager (MCSM) Daemon - the backend component that manages and runs your game server instances. Communicates with the MCSManager Web UI panel to launch, stop, and monitor servers.&#xD;&#xD;NOTE: This is the Daemon component. You must also run the MCSManager-Web container. After installation, open the Web UI, go to Nodes, set a name for the Node, and set the Daemon IP to YOUR_UNRAID_IP</Overview>
+  <Category>GameServers: Tools:</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/Billyboii/mcsmanager-unraid/main/mcsmanager-daemon.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/MCSManager/MCSManager/master/frontend/public/favicon.ico</Icon>
+  <ExtraParams>--restart unless-stopped</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>MCSManager-Web must also be running. But it's best to install this one first.</Requires>
+
+  <Config Name="Daemon Port" Target="24444" Default="24444" Mode="tcp" Description="Port used for communication between the Daemon and the Web UI panel." Type="Port" Display="always" Required="true" Mask="false">24444</Config>
+
+  <Config Name="Daemon Data" Target="/opt/mcsmanager/daemon/data" Default="/mnt/user/appdata/mcsmanager/daemon/data" Mode="rw" Description="Stores daemon data including server instance files." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/mcsmanager/daemon/data</Config>
+
+  <Config Name="Daemon Logs" Target="/opt/mcsmanager/daemon/logs" Default="/mnt/user/appdata/mcsmanager/daemon/logs" Mode="rw" Description="Stores daemon logs." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/mcsmanager/daemon/logs</Config>
+
+  <Config Name="Minecraft Port Range" Target="25565-25575" Default="25565-25575" Mode="tcp" Description="Port range for Minecraft server instances. Expand this range if you plan to run more than 10 servers." Type="Port" Display="always" Required="true" Mask="false">25565-25575</Config>
+
+  <Config Name="Minecraft Port Range UDP" Target="25565-25575" Default="25565-25575" Mode="udp" Description="UDP port range for Minecraft Bedrock server instances." Type="Port" Display="always" Required="true" Mask="false">25565-25575</Config>
+
+  <Config Name="Web Map Port" Target="8100" Default="" Mode="tcp" Description="Optional port or port range for web map viewing (Bluemap, Dynmap) (eg. 8100, 8123)" Type="Port" Display="always" Required="false" Mask="false">8100</Config>
+
+  <Config Name="Docker Workspace Path" Target="MCSM_DOCKER_WORKSPACE_PATH" Default="/mnt/user/appdata/mcsmanager/daemon/data/InstanceData" Mode="" Description="Path where MCSManager stores game server instance data. Must match the Daemon Data path." Type="Variable" Display="always" Required="true" Mask="false">/mnt/user/appdata/mcsmanager/daemon/data/InstanceData</Config>
+
+  <Config Name="Docker Socket" Target="/var/run/docker.sock" Default="/var/run/docker.sock" Mode="rw" Description="Allows MCSManager Daemon to manage Docker containers for game servers." Type="Path" Display="advanced" Required="true" Mask="false">/var/run/docker.sock</Config>
+
+  <Config Name="Localtime" Target="/etc/localtime" Default="/etc/localtime" Mode="ro" Description="Syncs container time with host." Type="Path" Display="advanced" Required="true" Mask="false">/etc/localtime</Config>
+
+</Container>

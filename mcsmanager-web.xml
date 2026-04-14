@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>MCSManager-Web</Name>
+  <Repository>githubyumao/mcsmanager-web:latest</Repository>
+  <Registry>https://hub.docker.com/r/githubyumao/mcsmanager-web</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://forums.unraid.net/topic/197644-support-mcsmanager-daemon-and-mcsmanager-web/</Support>
+  <Project>https://mcsmanager.com</Project>
+  <Overview>MCSManager (MCSM) is a fast, lightweight, open-source, web-based game server management panel. Manage multiple Minecraft Java/Bedrock, Steam, and other game servers from a single intuitive interface. Supports real-time console logging, automated backups, scheduled tasks, and multi-user support with granular permissions.&#xD;&#xD;NOTE: This is the Web UI component. You must also run the MCSManager-Daemon container. After installation, open the Web UI, go to Nodes, set a name for the Node, and set the Daemon IP to YOUR_UNRAID_IP</Overview>
+  <Category>GameServers: Tools:</Category>
+  <WebUI>http://[IP]:[PORT:23333]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/Billyboii/mcsmanager-unraid/main/mcsmanager-web.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/MCSManager/MCSManager/master/frontend/public/favicon.ico</Icon>
+  <ExtraParams>--restart unless-stopped</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>MCSManager-Daemon must also be running. It's best to install this one second.</Requires>
+
+  <Config Name="Web UI Port" Target="23333" Default="23333" Mode="tcp" Description="Port to access the MCSManager web interface." Type="Port" Display="always" Required="true" Mask="false">23333</Config>
+
+  <Config Name="Web Data" Target="/opt/mcsmanager/web/data" Default="/mnt/user/appdata/mcsmanager/web/data" Mode="rw" Description="Stores MCSManager web panel data including settings and user configs." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/mcsmanager/web/data</Config>
+
+  <Config Name="Web Logs" Target="/opt/mcsmanager/web/logs" Default="/mnt/user/appdata/mcsmanager/web/logs" Mode="rw" Description="Stores MCSManager web panel logs." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/mcsmanager/web/logs</Config>
+
+  <Config Name="Localtime" Target="/etc/localtime" Default="/etc/localtime" Mode="ro" Description="Syncs container time with host." Type="Path" Display="advanced" Required="true" Mask="false">/etc/localtime</Config>
+
+  <Config Name="Daemon Data (Read)" Target="/opt/mcsmanager/daemon/data" Default="/mnt/user/appdata/mcsmanager/daemon/data" Mode="ro" Description="Allows the Web panel to read the Daemon configuration automatically." Type="Path" Display="advanced" Required="true" Mask="false">/mnt/user/appdata/mcsmanager/daemon/data</Config>
+
+</Container>
