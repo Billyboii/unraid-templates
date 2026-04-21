@@ -92,6 +92,8 @@
     Description="Hostname and port of your Redis container or server. If using a separate Unraid Redis container on the same bridge network, use its container name (e.g. redis:6379). Otherwise use the host IP."
     Type="Variable" Display="always" Required="true" Mask="false">redis:6379</Config>
 
+  <Config Name="Redis Password" Target="FLEET_REDIS_PASSWORD" Default="" Description="Optional password for Redis authentication." Type="Variable" Display="always" Required="false" Mask="true"></Config>
+
   <!-- ==================== FLEET SERVER ==================== -->
 
   <Config Name="Fleet Server Address" Target="FLEET_SERVER_ADDRESS" Default="0.0.0.0:1337"
